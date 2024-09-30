@@ -9,12 +9,12 @@ let home: HomePage;
 test.beforeEach(async ({ page }, testInfo) => {
     common = new CommonMethods(page, testInfo);
     home = new HomePage(page);
-
 });
 
-test('Console error check - Home page', async () => {
+test('Console error check - Home page', async ({ page }) => {
     await common.setupConsoleListener();
     await common.setupPageErrorListener();
     await home.goto();
     await common.attachConsoleLogs();
+    await page.close();
 });
