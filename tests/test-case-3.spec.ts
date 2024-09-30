@@ -1,13 +1,13 @@
 import { LoginPage } from '../pageObjects/login/login-page';
 import { test } from '@playwright/test';
-import { commonMethods } from '../common-functions/common';
+import { CommonMethods } from '../common-functions/common';
 
 
-let common: commonMethods;
+let common: CommonMethods;
 let login: LoginPage;
 
 test.beforeEach(async ({ page }, testInfo) => {
-  common = new commonMethods(page, testInfo)
+  common = new CommonMethods(page, testInfo)
   login = new LoginPage(page);
 });
 

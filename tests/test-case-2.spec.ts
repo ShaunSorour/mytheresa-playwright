@@ -1,16 +1,19 @@
 import { test, expect } from '@playwright/test';
+import { CommonMethods } from '../common-functions/common';
+import { HomePage } from '../pageObjects/home/home-page';
 
 
+let common: CommonMethods;
+let home: HomePage;
 
-test('Links', async ({ page, request }) => {
-  await page.goto(process.env.URL!);
 
-  const hrefs: string[] = await page.$$eval('a', (links: HTMLAnchorElement[]) => links.map(link => link.href));
+test.beforeEach(async ({ page }, testInfo) => {
+  common = new CommonMethods(page, testInfo);
+  home = new HomePage(page);
 
-  for (const href of hrefs) {
-    const response = await request.get(href);
+});
 
-    expect(response.status(), `Link failed: ${href}`).toBe(200);
-    console.log(`${href}: ${response.status() === 200 ? '200 OK' : 'Error'}`);
-  }
+test('200 status link check - Home page', async ({ request }) => {
+  await home.goto();
+  await common.checkPageLinks200(request)
 });
