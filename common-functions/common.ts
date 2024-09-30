@@ -20,6 +20,12 @@ export class CommonMethods {
         });
     }
 
+    async attachFileToTestReport(filename: string, filePath: string) {
+        await this.testInfo.attach(filename, {
+            path: filePath,
+        });
+    }
+
     async setupConsoleListener() {
         this.page.on('console', (msg) => {
             if (msg.type() === 'error') {
