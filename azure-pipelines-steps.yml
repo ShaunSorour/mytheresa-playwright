@@ -1,0 +1,48 @@
+parameters:
+  buildId: ''
+  name: ''
+  script: ''
+
+steps:
+  - task: CmdLine@2
+    displayName: 'Write .env'
+    inputs:
+      script: set > $(System.DefaultWorkingDirectory)/.env
+    env:
+      ENV: $(ENV)
+      URL: $(URL)
+      ADMIN: $(USERNAME)
+      PASSWORD: $(PASSWORD)
+
+  - task: NodeTool@0
+    inputs:
+      versionSpec: '18'
+    displayName: 'Install Node.js'
+
+  - script: npm ci
+    displayName: 'npm Clean Install'
+
+  - script: npx playwright install --with-deps
+    displayName: 'Install Playwright Browsers'
+
+  - script: '${{parameters.script}}'
+    displayName: 'Run Tests'
+
+  - task: PublishTestResults@2
+    displayName: 'Publish Test Results'
+    inputs:
+      searchFolder: 'results'
+      testResultsFormat: 'JUnit'
+      testResultsFiles: 'results.xml'
+      mergeTestResults: true
+      failTaskOnFailedTests: true
+      testRunTitle: '${{parameters.name}} Tests'
+    condition: succeededOrFailed()
+
+  - task: PublishPipelineArtifact@1
+    displayName: 'Publish HTML Report'
+    inputs:
+      targetPath: 'results/html'
+      artifact: '${{parameters.name}}_HTML_Report'
+      publishLocation: 'pipeline'
+    condition: succeededOrFailed()
