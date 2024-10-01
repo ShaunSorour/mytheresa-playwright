@@ -13,6 +13,7 @@ npm install
 ```
 
 2. Set Env variables (2 Options:)
+
     -  Create config.ts file in /config - [Config template](/config/config-template.ts)
     -  Create .env files in /env - e.g .env.production, .env.staging - [.env template](/env/.env.template)
 
@@ -36,4 +37,4 @@ npm test test-case-1.spec.ts
 ENV=PRODUCTION npm test test-case-1.spec.ts
 ```
 
-4. Tests can also be run via UI via extension "Playwright Test for VSCode"
+4. Tests can also be run via UI using extension "Playwright Test for VSCode"
