@@ -11,8 +11,10 @@ npm install
 ```
 
 2. Set Env variables (2 Options:)
-    -  Create config.ts file in /config [View template](/config/config-template.ts)
-    
+    -  Create config.ts file in /config - [Config template](/config/config-template.ts)
+    -  Create .env files in /env - e.g .env.production - [.env template](/env/.env.template)
+
+
 ## RUN TEST
 
 ENV=PRODUCTION npx playwright test test-case-3.spec.ts
