@@ -6,16 +6,16 @@ import { Locators } from './login-locators';
 
 export class LoginPage extends BasePage {
     readonly page: Page;
-    readonly inputUsername: Locator;
-    readonly inputPassword: Locator;
     readonly btnSignIn: Locator;
+    readonly inputPassword: Locator;
+    readonly inputUsername: Locator;
 
     constructor(page: Page) {
         super(page);
         this.page = page;
-        this.inputUsername = Locators.inputUsername(page)
-        this.inputPassword = Locators.inputPassword(page);
         this.btnSignIn = Locators.btnSignIn(page)
+        this.inputPassword = Locators.inputPassword(page);
+        this.inputUsername = Locators.inputUsername(page)
     }
 
     async goto() {

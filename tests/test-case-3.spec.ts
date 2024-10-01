@@ -13,6 +13,7 @@ test.beforeEach(async ({ page }, testInfo) => {
 
 test('Successful Login', async ({ page }) => {
   await login.goto();
+  await common.addScreenshot("Login page");
   await login.fillCredentials(process.env.USERNAME!, process.env.PASSWORD!);
   await login.loginPositive();
   await common.addScreenshot("Signed in Successfully");

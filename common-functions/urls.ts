@@ -1,3 +1,2 @@
-export const example = "/example/page"
+export const about = "/about"
 export const login = "/login"
-export const cart = "/cart"

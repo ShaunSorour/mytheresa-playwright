@@ -1,6 +1,6 @@
 import dotenv from 'dotenv';
 import { FullConfig } from '@playwright/test';
-import { config as envConfig } from './config.ts';
+import { config as envConfig } from '../config/config.ts';
 
 
 async function globalSetup(config: FullConfig) {
@@ -10,7 +10,7 @@ async function globalSetup(config: FullConfig) {
     if (process.env.ENV) {
       console.log("ENV - Command line")
       dotenv.config({
-        path: `.env.${process.env.ENV}`,
+        path: `env/.env.${process.env.ENV}`,
         override: true,
       });
     } else {

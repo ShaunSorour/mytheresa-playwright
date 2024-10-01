@@ -1,7 +1,8 @@
 import { defineConfig, devices } from '@playwright/test';
 
+
 export default defineConfig({
-  globalSetup: require.resolve('./global-setup'),
+  globalSetup: require.resolve('./setup/global-setup'),
   testDir: './tests/',
   fullyParallel: true,
   forbidOnly: !!process.env.CI,
@@ -14,12 +15,6 @@ export default defineConfig({
       ['html', { outputFolder: 'results/html', open: 'never' }]
     ],
   use: {
-    // baseURL: 'http://127.0.0.1:3000',
-    // extraHTTPHeaders: {
-    //   'Accept': 'application/json',
-    //   'Authorization': `token ${process.env.API_TOKEN}`,
-    // },
-
     trace: 'on-first-retry',
     screenshot: 'only-on-failure',
   },
