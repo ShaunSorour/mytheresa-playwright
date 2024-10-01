@@ -1,11 +1,11 @@
 import axios from 'axios';
 import * as fs from 'fs';
-import * as path from 'path';
 
 
+async function fetchPullRequestPage(page: number, githubProject: string, githubOrg: string) {
+    const url = `${process.env.GITHUB_API_URL}/${githubOrg}/${githubProject}/pulls`
 
-async function fetchPullRequestPage(page: number, pageUrl: string) {
-    const response = await axios.get(pageUrl, {
+    const response = await axios.get(url, {
         headers: {
             'Accept': 'application/vnd.github.v3+json',
         },
@@ -25,27 +25,24 @@ function parsePullRequestData(response: any) {
     }));
 }
 
-
 function writeDataToCSV(pullRequests: any[]) {
     const csvData = 'PR Name,Created Date,Author\n' + pullRequests
         .map((pr: any) => `${pr.name},${pr.created_at},${pr.author}`)
         .join('\n');
 
-    const filePath = path.join(__dirname, 'pull_requests.csv');
+    const filePath = 'tests/pull_requests.csv';
     fs.writeFileSync(filePath, csvData);
 
-    console.log(`Fetched ${pullRequests.length} pull requests`);
     console.log(`Pull request data saved to ${filePath}`);
 }
 
-
-async function fetchAllPullRequests(pageUrl: string) {
+async function fetchAllPullRequests(githubProject: string, githubOrg: string) {
     let allPullRequests: any[] = [];
     let page = 1;
     let morePagesExist = true;
 
     while (morePagesExist) {
-        const response = await fetchPullRequestPage(page, pageUrl);
+        const response = await fetchPullRequestPage(page, githubProject, githubOrg);
         const parsedData = parsePullRequestData(response);
 
         allPullRequests = allPullRequests.concat(parsedData);

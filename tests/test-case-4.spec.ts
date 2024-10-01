@@ -7,18 +7,20 @@ import { CommonMethods } from '../common-functions/common';
 
 let common: CommonMethods;
 
-
 test.beforeEach(async ({ page }, testInfo) => {
   common = new CommonMethods(page, testInfo)
 });
 
+test('Fetch GitHub Pull Requests for product and Save to CSV', async ({ page }) => {
+  const githubProject = 'appwrite';
+  const githubOrg = 'appwrite';
 
-test('Fetch GitHub Pull Requests and Save to CSV', async ({ page }) => {
-  await fetchAllPullRequests(process.env.GITHUB_API_URL!);
+  await fetchAllPullRequests(githubProject, githubOrg);
 
+  // check file was created
   const filePath = path.join(__dirname, 'pull_requests.csv');
   expect(fs.existsSync(filePath)).toBe(true);
 
-  await common.attachFileToTestReport("PRs-open", "tests/pull_requests.csv")
+  await common.attachFileToTestReport("PRs-Open", "tests/pull_requests.csv")
   await page.close();
 });
