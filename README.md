@@ -2,7 +2,9 @@
 
 Example of test automation framework skeleton
 
-NOTE: If ENV variables are passed into command line when running tests .env file will be used, else config file will be used
+NOTE: 
+
+If ENV variables are passed into command line when running tests .env file will be used, else config file will be used
 
 ## Getting Started
 
