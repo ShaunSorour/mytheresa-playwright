@@ -13,19 +13,33 @@ schedules:
 pool:
   vmImage: ubuntu-latest
 
-variables:
-  - group: 'Mytheresa'  
-
 stages:
-  - stage: login
-    displayName: Login stage
+  - stage: Staging
+    displayName: Staging
+    variables:
+      - group: 'Mytheresa-Stag' 
     jobs:
-      - job: run_login
-        displayName: Run login
+      - job: run_staging
+        displayName: Run Staging
         steps:
           - template: azure-pipelines-steps.yml
             parameters:
-              stage: "Login"
-              name: Login
-              script: npx playwright test login
+              stage: "Staging"
+              name: Staging
+              script: npx playwright test
+              buildId: $(Build.BuildId)
+
+  - stage: Production
+    displayName: Production
+    variables:
+      - group: 'Mytheresa-Prod' 
+    jobs:
+      - job: run_production
+        displayName: Run Production
+        steps:
+          - template: azure-pipelines-steps.yml
+            parameters:
+              stage: "Production"
+              name: Production
+              script: npx playwright test
               buildId: $(Build.BuildId)
