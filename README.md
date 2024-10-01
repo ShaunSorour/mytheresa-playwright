@@ -20,7 +20,7 @@ npm install
     -  Create .env files in /env - e.g .env.production, .env.staging - [.env template](/env/.env.template)
 
 
-## RUNNING TESTS
+## Run Tests
 1. Run all
 
 ```bash
@@ -40,3 +40,7 @@ ENV=PRODUCTION npm test test-case-1.spec.ts
 ```
 
 4. Tests can also be run via UI using extension "Playwright Test for VSCode"
+
+
+## View Report
+1. HTML report can be found under /results/index.html
