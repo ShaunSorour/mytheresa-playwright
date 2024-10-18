@@ -1,6 +1,6 @@
-import { LoginPage } from '../pages/login/login-page';
+import { LoginPage } from '../../pages/login/login-page';
 import { test } from '@playwright/test';
-import { BasePage } from '../pages/base/base-page';
+import { BasePage } from '../../pages/base/base-page';
 
 
 let base: BasePage;

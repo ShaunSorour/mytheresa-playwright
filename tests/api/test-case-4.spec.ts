@@ -1,8 +1,8 @@
 import * as fs from 'fs';
 import * as path from 'path';
 import { test, expect } from '@playwright/test';
-import { fetchAllPullRequests } from '../utilities/github-utility';
-import { BasePage } from '../pages/base/base-page';
+import { fetchAllPullRequests } from '../../utilities/github-utility';
+import { BasePage } from '../../pages/base/base-page';
 
 
 let base: BasePage;
