@@ -1,21 +1,21 @@
-import { LoginPage } from '../pageObjects/login/login-page';
+import { LoginPage } from '../pages/login/login-page';
 import { test } from '@playwright/test';
-import { CommonMethods } from '../common-functions/common';
+import { BasePage } from '../pages/base/base-page';
 
 
-let common: CommonMethods;
+let base: BasePage;
 let login: LoginPage;
 
 test.beforeEach(async ({ page }, testInfo) => {
-  common = new CommonMethods(page, testInfo)
-  login = new LoginPage(page);
+  base = new BasePage(page, testInfo);
+  login = new LoginPage(page, testInfo);
 });
 
 test('Successful Login', async ({ page }) => {
   await login.goto();
-  await common.addScreenshot("Login page");
+  await base.addScreenshot("Login page");
   await login.fillCredentials(process.env.USERNAME!, process.env.PASSWORD!);
   await login.loginPositive();
-  await common.addScreenshot("Signed in Successfully");
+  await base.addScreenshot("Signed in Successfully");
   await page.close();
 });

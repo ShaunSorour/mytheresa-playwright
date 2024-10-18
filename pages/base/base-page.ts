@@ -1,11 +1,12 @@
-import { Page, TestInfo, APIRequestContext, expect } from '@playwright/test';
+import { expect, type Locator, type Page, TestInfo, APIRequestContext } from '@playwright/test';
+import * as dotenv from 'dotenv'
+dotenv.config()
 
-
-export class CommonMethods {
-    private page: Page;
-    private testInfo: TestInfo;
-    private logs: { message: string; type: string }[] = [];
-    private errorMsg: { name: string; message: string }[] = [];
+export class BasePage {
+    readonly page: Page;
+    readonly testInfo: TestInfo;
+    readonly logs: { message: string; type: string }[] = [];
+    readonly errorMsg: { name: string; message: string }[] = [];
 
     constructor(page: Page, testInfo: TestInfo) {
         this.page = page;
@@ -59,6 +60,7 @@ export class CommonMethods {
 
         for (const href of hrefs) {
             const response = await request.get(href);
+
             expect(response.status(), `Link failed: ${href}`).toBe(200);
             console.log(`${href}: ${response.status() === 200 ? '200 OK' : 'Error'}`);
         }

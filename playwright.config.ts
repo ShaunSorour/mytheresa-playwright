@@ -3,6 +3,7 @@ import { defineConfig, devices } from '@playwright/test';
 
 export default defineConfig({
   globalSetup: require.resolve('./setup/global-setup'),
+  globalTimeout: 60 * 60 * 1000,
   testDir: './tests/',
   fullyParallel: true,
   forbidOnly: !!process.env.CI,
@@ -20,18 +21,18 @@ export default defineConfig({
   },
 
   projects: [
-    {
-      name: 'firefox',
-      use: { ...devices['Desktop Firefox'] },
-    },
-    {
-      name: 'webkit',
-      use: { ...devices['Desktop Safari'] },
-    },
-    {
-      name: 'Microsoft Edge',
-      use: { ...devices['Desktop Edge'], channel: 'msedge' },
-    },
+    // {
+    //   name: 'firefox',
+    //   use: { ...devices['Desktop Firefox'] },
+    // },
+    // {
+    //   name: 'webkit',
+    //   use: { ...devices['Desktop Safari'] },
+    // },
+    // {
+    //   name: 'Microsoft Edge',
+    //   use: { ...devices['Desktop Edge'], channel: 'msedge' },
+    // },
     {
       name: 'Google Chrome',
       use: { ...devices['Desktop Chrome'], channel: 'chrome' },

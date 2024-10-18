@@ -1,20 +1,20 @@
 import { test } from '@playwright/test';
-import { CommonMethods } from '../common-functions/common';
-import { HomePage } from '../pageObjects/home/home-page';
+import { HomePage } from '../pages/home/home-page';
+import { BasePage } from '../pages/base/base-page';
 
 
-let common: CommonMethods;
+let base: BasePage;
 let home: HomePage;
 
 test.beforeEach(async ({ page }, testInfo) => {
-    common = new CommonMethods(page, testInfo);
-    home = new HomePage(page);
+    base = new BasePage(page, testInfo);
+    home = new HomePage(page, testInfo);
 });
 
 test('Console error check - Home page', async ({ page }) => {
-    await common.setupConsoleListener();
-    await common.setupPageErrorListener();
+    await base.setupConsoleListener();
+    await base.setupPageErrorListener();
     await home.goto();
-    await common.attachConsoleLogs();
+    await base.attachConsoleLogs();
     await page.close();
 });

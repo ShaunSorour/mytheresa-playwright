@@ -1,6 +1,5 @@
-import { expect, type Locator, type Page } from '@playwright/test';
+import { expect, TestInfo, type Locator, type Page } from '@playwright/test';
 import { BasePage } from '../base/base-page';
-import { login } from '../../common-functions/urls';
 import { Locators } from './login-locators';
 
 
@@ -10,8 +9,8 @@ export class LoginPage extends BasePage {
     readonly inputPassword: Locator;
     readonly inputUsername: Locator;
 
-    constructor(page: Page) {
-        super(page);
+    constructor(page: Page, testInfo: TestInfo) {
+        super(page, testInfo);
         this.page = page;
         this.btnSignIn = Locators.btnSignIn(page)
         this.inputPassword = Locators.inputPassword(page);
@@ -19,7 +18,7 @@ export class LoginPage extends BasePage {
     }
 
     async goto() {
-        await this.page.goto(process.env.URL! + login);
+        await this.page.goto(`${process.env.URL!}${'/login'}`);
         await expect(this.page).toHaveURL(/.*login/);
     }
 
