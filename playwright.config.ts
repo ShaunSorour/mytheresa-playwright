@@ -35,8 +35,14 @@ export default defineConfig({
     //   use: { ...devices['Desktop Edge'], channel: 'msedge' },
     // },
     {
+      name: 'Setup - Authentication',
+      testMatch: /global\.setup\.ts/,
+    },
+    {
       name: 'Google Chrome',
       use: { ...devices['Desktop Chrome'], channel: 'chrome' },
+      dependencies: ['Setup - Authentication'],
+
     },
   ],
 });
