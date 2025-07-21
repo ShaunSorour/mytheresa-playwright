@@ -1,6 +1,6 @@
 import { expect, test } from '@playwright/test';
-import { FavouriteMovieRequest, FavouriteMovieResponse } from '../../types/movie/favourite';
-import { Movie_APIHelper } from '../../utilities/api/movie-api-helper';
+import { FavouriteMovieRequest, FavouriteMovieResponse } from '../../../types/movie/favourite';
+import { Movie_APIHelper } from '../../../utilities/api/movie/movie-api-helper';
 
 
 let movieAPI: Movie_APIHelper;

@@ -1,6 +1,6 @@
 import { test } from '@playwright/test';
-import { HomePage } from '../../pages/home/home-page';
-import { BasePage } from '../../pages/base/base-page';
+import { HomePage } from '../../../pages/home/home-page';
+import { BasePage } from '../../../pages/base/base-page';
 
 
 let base: BasePage;

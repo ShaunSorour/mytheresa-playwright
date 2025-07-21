@@ -1,6 +1,6 @@
+import { PopularMoviesResponse } from './../../../types/movie/movie';
 import { APIRequestContext, expect } from '@playwright/test';
-import { PopularMoviesResponse } from '../../types/movie/movie';
-import { FavouriteMovieRequest, FavouriteMovieResponse } from '../../types/movie/favourite';
+import { FavouriteMovieRequest, FavouriteMovieResponse } from '../../../types/movie/favourite';
 import { BaseAPIHelper } from './base-api-helper';
 
 

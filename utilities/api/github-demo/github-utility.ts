@@ -1,7 +1,7 @@
 import axios, { AxiosResponse } from 'axios';
 import * as fs from 'fs';
 import { PullRequestDTO } from '../../dtos/pull-request-dto';
-import { PullRequest } from '../../types/pull-request';
+import { PullRequest } from '../../types/github-demo/pull-request';
 
 
 async function fetchPullRequestPage(page: number, githubProject: string, githubOrg: string): Promise<AxiosResponse<PullRequest[]>> {

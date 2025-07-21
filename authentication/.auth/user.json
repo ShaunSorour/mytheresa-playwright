@@ -1,0 +1,15 @@
+{
+  "cookies": [
+    {
+      "name": "_gh_sess",
+      "value": "Xd50Jb76Yt9Zc04QHRgmF7ytOSZrk%2FfApYpt60Yi3Fe0%2F%2BldqXRGPXH7Mymkk56eEIus1AH94ERcF52OZ7zslsK1T%2B45ilNuCXXQeIRUtMqBHjpSzpfEAoAbXuFV4SOQXG10g62oh66LYUNVG5%2BlOVndEXEcmxzYqqJtVwO9mgYo2SiWlhAVrNjtwR4iEpdYuHMrZA%3D%3D--UW6klzEMx7s7GQET--DEKN1xdzvtDXnQGSu9hYtw%3D%3D",
+      "domain": "github.com",
+      "path": "/",
+      "expires": -1,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "Lax"
+    }
+  ],
+  "origins": []
+}
