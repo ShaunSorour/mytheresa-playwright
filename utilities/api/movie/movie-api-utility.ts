@@ -1,14 +1,23 @@
 import { APIRequestContext, expect, APIResponse } from '@playwright/test';
 import { FavouriteMovieRequest, FavouriteMovieResponse } from '../../../types/movie/favourite';
-import { BaseAPIHelper } from './base-api-helper';
+import { BaseAPIUtility } from '../base/base-api-utility';
 
 
-export class Movie_APIHelper extends BaseAPIHelper {
+export class MovieAPIUtility extends BaseAPIUtility {
     private movieAccountID: string;
+    protected baseUrl: string;
 
     constructor(requestContext: APIRequestContext) {
         super(requestContext);
+        this.baseUrl = process.env.API_BASE_URL || '';
         this.movieAccountID = process.env.MOVIE_ACCOUNT_ID || '';
+    }
+
+    protected getAuthHeaders(): Record<string, string> {
+        return {
+            'Authorization': `Bearer ${process.env.API_BEARER_TOKEN}`,
+            'Content-Type': 'application/json'
+        };
     }
 
     async getPopularMovies(language: string, page: string): Promise<APIResponse> {
